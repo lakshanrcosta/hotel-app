@@ -1,0 +1,117 @@
+.text-danger {
+    font-size: 0.9rem;
+  }
+
+  /* Container */
+.reservation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 20px;
+}
+
+/* Form Card */
+.reservation-card {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Navigation Buttons */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.button-group .btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+  width: 45%;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background: #545b62;
+}
+
+.btn-info {
+  background: #17a2b8;
+  color: white;
+  border: none;
+}
+
+.btn-info:hover {
+  background: #138496;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Input & Select */
+.form-control {
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Error Messages */
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.error-message i {
+  margin-right: 5px;
+}
+
+/* Submit Button */
+.btn-block {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}

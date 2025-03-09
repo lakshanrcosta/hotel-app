@@ -1,0 +1,87 @@
+<div class="reservation-container">
+    <div class="reservation-card">
+        <h2 class="text-center text-primary">Create a Reservation</h2>
+
+        <!-- Navigation Buttons (Moved Above the Form) -->
+        <div class="button-group">
+            <button type="button" class="btn btn-secondary btn-lg" (click)="navigateToHome()"><i
+                    class="bi bi-house"></i> Home</button>
+            <button type="button" class="btn btn-info btn-lg" (click)="navigateToReservations()"><i
+                    class="bi bi-card-list"></i> View Reservations</button>
+        </div>
+
+        <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+            <!-- Check-in Date -->
+            <div class="form-group">
+                <label for="checkInDate">Check-in Date</label>
+                <input type="date" id="checkInDate" class="form-control" formControlName="checkInDate">
+                <div *ngIf="isFieldInvalid('checkInDate')" class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> Check-in date is required.
+                </div>
+            </div>
+
+            <!-- Check-out Date -->
+            <div class="form-group">
+                <label for="checkOutDate">Check-out Date</label>
+                <input type="date" id="checkOutDate" class="form-control" formControlName="checkOutDate">
+                <div *ngIf="isFieldInvalid('checkOutDate')" class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> Check-out date is required.
+                </div>
+                <div *ngIf="reservationForm.errors?.['invalidDate']" class="error-message">
+                    <i class="fas fa-exclamation-triangle"></i> Check-out date cannot be before check-in date.
+                </div>
+            </div>
+
+            <!-- Guest Name -->
+            <div class="form-group">
+                <label for="guestName">Guest Name</label>
+                <input type="text" id="guestName" class="form-control" formControlName="guestName">
+                <div *ngIf="isFieldInvalid('guestName')" class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> Guest name is required (min 3 characters).
+                </div>
+            </div>
+
+            <!-- Guest Email -->
+            <div class="form-group">
+                <label for="guestEmail">Guest Email</label>
+                <input type="email" id="guestEmail" class="form-control" formControlName="guestEmail">
+                <div *ngIf="isFieldInvalid('guestEmail')" class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> Valid email address is required.
+                </div>
+            </div>
+
+            <!-- Room Type -->
+            <div class="form-group">
+                <label for="roomTypeId">Room Type</label>
+                <select id="roomTypeId" class="form-control" formControlName="roomTypeId">
+                    <option value="" disabled>Select a room type</option>
+                    <option *ngFor="let room of roomTypes" [value]="room.id">
+                        {{ room.name }} - ${{ room.price }}
+                    </option>
+                </select>
+                <div *ngIf="isFieldInvalid('roomTypeId')" class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> Please select a room type.
+                </div>
+            </div>
+
+            <!-- Room Number -->
+            <div class="form-group">
+                <label for="roomNumber">Room Number</label>
+                <select id="roomNumber" class="form-control" formControlName="roomNumber">
+                    <option value="" disabled>Select a room number</option>
+                    <option *ngFor="let room of availableRooms" [value]="room.roomNumber">
+                        {{ room.roomNumber }}
+                    </option>
+                </select>
+                <div *ngIf="isFieldInvalid('roomNumber')" class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> Please select an available room.
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="reservationForm.invalid">
+                <i class="fas fa-check"></i> Submit Reservation
+            </button>
+        </form>
+    </div>
+</div>
